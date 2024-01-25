@@ -29,17 +29,17 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Movement"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""9771a505-73c4-4946-a247-b65e8afc15bc"",
-                    ""expectedControlType"": ""Vector3"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Sprint"",
+                    ""name"": ""Run"",
                     ""type"": ""Button"",
-                    ""id"": ""0958bc65-dd2b-4203-a579-7de650e95f78"",
+                    ""id"": ""cac59f32-06a8-480d-a4dd-6787cc716636"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -48,9 +48,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": ""WASD"",
-                    ""id"": ""49b5be8f-3582-4436-944a-2b710f7b578c"",
-                    ""path"": ""3DVector"",
+                    ""name"": ""2D Vector"",
+                    ""id"": ""3ffe2778-b413-41e3-a1e3-51ad2ba02fbc"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -59,8 +59,30 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
+                    ""name"": ""up"",
+                    ""id"": ""665476ee-dd08-4c8c-ae91-70325a5546af"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""b5f774e4-c23c-4010-8b3a-9a6cfe0b8f68"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": ""left"",
-                    ""id"": ""f32b6a7f-8735-474d-be7a-05f5d58ec948"",
+                    ""id"": ""c87ce602-32eb-42de-8efc-5bfa0841d5cd"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -71,7 +93,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""64ea8571-67ad-447c-abe5-cb4b3b0cf19a"",
+                    ""id"": ""33cab825-1eac-44f0-bf08-262c3d5b585b"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -81,90 +103,13 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""forward"",
-                    ""id"": ""fb10da72-c37e-4333-b94e-6c6e5ad71569"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""backward"",
-                    ""id"": ""4258b999-53a6-437e-91af-dc09c51b8a19"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Arrows"",
-                    ""id"": ""e26bc46d-f315-42ae-a226-bfcc272d9781"",
-                    ""path"": ""3DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""58c01557-a472-4399-a19e-0379796bc880"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""a362a10b-6703-4bea-9911-b7cf7dacfe3f"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""forward"",
-                    ""id"": ""adb71012-f8aa-4390-80a5-8bbf7227bc91"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""backward"",
-                    ""id"": ""daa2eb38-07cb-4c96-a920-a15fe3272997"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
-                    ""id"": ""f3b495a0-883d-445a-9455-1355943f4313"",
+                    ""id"": ""6d5254f0-9e41-49e6-b193-08a2838614b9"",
                     ""path"": ""<Keyboard>/shift"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Sprint"",
+                    ""action"": ""Run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -176,7 +121,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
-        m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
+        m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -239,13 +184,13 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Movement;
-    private readonly InputAction m_Player_Sprint;
+    private readonly InputAction m_Player_Run;
     public struct PlayerActions
     {
         private @CustomInput m_Wrapper;
         public PlayerActions(@CustomInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
-        public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
+        public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -258,9 +203,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
-            @Sprint.started += instance.OnSprint;
-            @Sprint.performed += instance.OnSprint;
-            @Sprint.canceled += instance.OnSprint;
+            @Run.started += instance.OnRun;
+            @Run.performed += instance.OnRun;
+            @Run.canceled += instance.OnRun;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -268,9 +213,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
-            @Sprint.started -= instance.OnSprint;
-            @Sprint.performed -= instance.OnSprint;
-            @Sprint.canceled -= instance.OnSprint;
+            @Run.started -= instance.OnRun;
+            @Run.performed -= instance.OnRun;
+            @Run.canceled -= instance.OnRun;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -291,6 +236,6 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnSprint(InputAction.CallbackContext context);
+        void OnRun(InputAction.CallbackContext context);
     }
 }
