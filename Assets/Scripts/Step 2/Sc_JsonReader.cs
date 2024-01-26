@@ -6,50 +6,34 @@ using UnityEngine.Networking;
 
 public class Sc_JsonReader : MonoBehaviour
 {
-    //[SerializeField] private CubeList cubes = new CubeList();
-    [SerializeField] private CubeList cubes = new CubeList();
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private string URL;
+    private string result;
+
+    
+    void Awake()
     {
         StartCoroutine(Read());
     }
 
     private IEnumerator Read()
     {
-        UnityWebRequest request = UnityWebRequest.Get("https://dev.advepa.com/skilltest/getCharacter/index.json");
+        UnityWebRequest request = UnityWebRequest.Get(URL);
 
         yield return request.SendWebRequest();
 
         if(request.result != UnityWebRequest.Result.Success)
-        {
             Debug.LogError(request.error);
-        }
         else
-        {
-            string result = request.downloadHandler.text;
-            cubes = JsonUtility.FromJson<CubeList>(result);
-            
-            Debug.Log(result);
-        }
-
+            result = request.downloadHandler.text;
+        
         request.Dispose();
     }
 
+    public string GetJsonResult { get { return result; } }
+
 
 }
 
-[System.Serializable]
-public class Cubecharacter
-{
-    public int id;
-    public string color;
-    public string name;
-}
 
-[System.Serializable]
-public class CubeList
-{
-    public List<Cubecharacter> cubecharacters;
-}
 
 
