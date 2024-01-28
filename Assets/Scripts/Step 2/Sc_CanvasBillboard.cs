@@ -5,15 +5,24 @@ using Cinemachine;
 
 public class Sc_CanvasBillboard : MonoBehaviour
 {
-    public Transform cinemachineCameraTransform;
+    private CinemachineVirtualCamera cinemachineCamera;
 
-    private void LateUpdate()
+    void Start()
     {
+        cinemachineCamera = FindObjectOfType<CinemachineVirtualCamera>();
 
-        //transform.LookAt(transform.position + Camera.main.transform.forward, Camera.main.transform.up);
-        //transform.LookAt(transform.position + cam.transform.forward, cam.transform.up);
-        //print(cam.gameObject.transform.position);
-        transform.LookAt(transform.position + cinemachineCameraTransform.forward, cinemachineCameraTransform.up);
+        if (cinemachineCamera == null)
+        {
+            Debug.LogError("Cinemachine virtual camera not found in the scene!");
+        }
+    }
+
+    void LateUpdate()
+    {
+        if (cinemachineCamera != null)
+        {
+            transform.LookAt(cinemachineCamera.transform, Vector3.up);
+        }
     }
 }
 
