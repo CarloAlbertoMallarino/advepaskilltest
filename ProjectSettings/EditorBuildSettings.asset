@@ -8,5 +8,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
+  - enabled: 1
+    path: Assets/AdvepaSkillTest/Step 2/Scene/Additive 1.unity
+    guid: 92a17e7c31d7941488834b73736833bb
+  - enabled: 1
+    path: Assets/AdvepaSkillTest/Step 3/Scene/Additive 2.unity
+    guid: 7da87c29267f9bd48b62979f2bfe02e6
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 615b4c69a2a0b5f42acc65ce5ab5adc7, type: 2}

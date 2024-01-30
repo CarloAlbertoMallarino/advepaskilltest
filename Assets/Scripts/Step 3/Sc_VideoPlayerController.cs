@@ -7,6 +7,7 @@ public class Sc_VideoPlayerController : MonoBehaviour
 {
     private VideoPlayer player;
     [SerializeField] private string URL;
+    [SerializeField] private GameObject uiControls;
 
     private void Start()
     {
@@ -14,16 +15,17 @@ public class Sc_VideoPlayerController : MonoBehaviour
         player.url = URL;
     }
 
-    private void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            player.Stop();
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-            player.Play();
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-            player.Pause();
+        if(other.CompareTag("Player"))
+            uiControls.SetActive(true);
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            uiControls.SetActive(false);
+    }
     public void PlayClip()
     {
         player.Play();
