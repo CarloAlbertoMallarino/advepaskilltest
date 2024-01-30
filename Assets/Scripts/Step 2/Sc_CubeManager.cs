@@ -11,15 +11,27 @@ public class Sc_CubeManager : MonoBehaviour
 
     void Start()
     {
-        cubesData = JsonUtility.FromJson<CubeListData>(jsonReader.GetJsonResult);
+        StartCoroutine(WaitForJsonDataValidation());
+    }
 
-        for (int i = 0; i < cubeObjs.Count; i++)
+    private IEnumerator WaitForJsonDataValidation()
+    {
+        yield return new WaitUntil(() => jsonReader.GetDataCollected);
+
+        cubesData = JsonUtility.FromJson<CubeListData>(jsonReader.GetJsonResult);
+        print(cubesData);
+        if (cubesData != null)
         {
-            cubeObjs[i].InitCube(cubesData.cubecharacters[i]);
+            for (int i = 0; i < cubeObjs.Count; i++)
+            {
+                cubeObjs[i].InitCube(cubesData.cubecharacters[i]);
+            }
         }
     }
 
 }
+
+
 
 [System.Serializable]
 public class Cubecharacter
