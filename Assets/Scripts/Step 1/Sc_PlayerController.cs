@@ -6,7 +6,7 @@ using Cinemachine;
 
 public class Sc_PlayerController : MonoBehaviour
 {
-    [SerializeField] private CinemachineFreeLook camRef;
+    private CinemachineFreeLook camRef;
 
     private CustomInput input;
     private CharacterController controller;
@@ -45,8 +45,12 @@ public class Sc_PlayerController : MonoBehaviour
 
     private void RotatePlayer()
     {
-        Quaternion rotation = Quaternion.Euler(0, camRef.m_XAxis.Value, 0); //get the angle of the x axis of the cinemachine
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 20 * Time.deltaTime);
+        if(camRef != null)
+        {
+            Quaternion rotation = Quaternion.Euler(0, camRef.m_XAxis.Value, 0); //get the angle of the x axis of the cinemachine
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 20 * Time.deltaTime);
+        }
+
     }
 
     private void OnEnable()
@@ -57,6 +61,11 @@ public class Sc_PlayerController : MonoBehaviour
     private void OnDisable()
     {
         input.Player.Disable();
+    }
+
+    public void SetCamera(CinemachineFreeLook cam)
+    {
+        camRef = cam;
     }
    
 }

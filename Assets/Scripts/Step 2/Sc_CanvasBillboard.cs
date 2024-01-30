@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class Sc_CanvasBillboard : MonoBehaviour
 {
-    private CinemachineVirtualCamera cinemachineCamera;
+    [SerializeField] private CinemachineVirtualCamera cinemachineCamera;
 
     void Start()
     {

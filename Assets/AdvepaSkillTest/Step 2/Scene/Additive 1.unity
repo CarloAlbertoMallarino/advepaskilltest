@@ -510,6 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455ea10ff348e254d9124672535cfb30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cinemachineCamera: {fileID: 0}
 --- !u!1 &418563296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1706,6 +1707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455ea10ff348e254d9124672535cfb30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cinemachineCamera: {fileID: 0}
 --- !u!1 &1618447948
 GameObject:
   m_ObjectHideFlags: 0
@@ -2588,6 +2590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455ea10ff348e254d9124672535cfb30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cinemachineCamera: {fileID: 0}
 --- !u!1 &2060268527
 GameObject:
   m_ObjectHideFlags: 0
