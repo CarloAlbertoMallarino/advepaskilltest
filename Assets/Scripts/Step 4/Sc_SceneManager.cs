@@ -14,7 +14,7 @@ public class Sc_SceneManager : MonoBehaviour
     [SerializeField] private CinemachineFreeLook cinemachineCamera;
     private void Start()
     {
-        GameObject player = Instantiate(playerPrefab, playerStart);
+        GameObject player = Instantiate(playerPrefab, playerStart.position, playerStart.rotation);
         player.GetComponent<Sc_PlayerController>().SetCamera(cinemachineCamera);
         cinemachineCamera.m_Follow = player.transform;
         cinemachineCamera.m_LookAt = player.transform;

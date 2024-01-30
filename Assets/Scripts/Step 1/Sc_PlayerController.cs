@@ -7,27 +7,23 @@ using Cinemachine;
 public class Sc_PlayerController : MonoBehaviour
 {
     private CinemachineFreeLook camRef;
-
+    private float camXMaxSpeed;
+    private float camYMaxSpeed;
     private CustomInput input;
     private CharacterController controller;
 
     private Animator animator;
 
     private Vector2 currentMovement;
-    private bool movementPressed;
     private bool runPressed;
+    [SerializeField] private bool lockPressed;
     private void Awake()
     {
         input = new CustomInput();
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
-
-        input.Player.Movement.performed += ctx =>
-        {
-            currentMovement = ctx.ReadValue<Vector2>();
-            movementPressed = currentMovement.x != 0 || currentMovement.y != 0;
-        };
-        input.Player.Run.performed += ctx => runPressed = ctx.ReadValueAsButton();
+        
+        InputSubscription();
     }
 
     private void Update()
@@ -36,6 +32,24 @@ public class Sc_PlayerController : MonoBehaviour
         RotatePlayer();
     }
 
+    private void OnEnable()
+    {
+        input.Player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        input.Player.Disable();
+    }
+
+    private void InputSubscription()
+    {
+        input.Player.Movement.performed += ctx => currentMovement = ctx.ReadValue<Vector2>();
+        input.Player.Run.performed += ctx => runPressed = ctx.ReadValueAsButton();
+        input.Player.LockScreen.performed += ctx => ToggleCameraLock();
+    }
+
+    #region Movement
     private void HandleMovement()
     {
         animator.SetFloat("Y", currentMovement.y);
@@ -53,19 +67,32 @@ public class Sc_PlayerController : MonoBehaviour
 
     }
 
-    private void OnEnable()
-    {
-        input.Player.Enable();
-    }
+    #endregion
 
-    private void OnDisable()
-    {
-        input.Player.Disable();
-    }
-
+    #region Camera
     public void SetCamera(CinemachineFreeLook cam)
     {
         camRef = cam;
+        camXMaxSpeed = camRef.m_XAxis.m_MaxSpeed;
+        camYMaxSpeed = camRef.m_YAxis.m_MaxSpeed;
     }
-   
+
+    private void ToggleCameraLock()
+    {
+        lockPressed = !lockPressed;
+
+        if(lockPressed)
+        {
+            camRef.m_XAxis.m_MaxSpeed = 0;
+            camRef.m_YAxis.m_MaxSpeed = 0;
+        }
+        else
+        {
+            camRef.m_XAxis.m_MaxSpeed = camXMaxSpeed;
+            camRef.m_YAxis.m_MaxSpeed = camYMaxSpeed;
+        } 
+    }
+
+    #endregion
+
 }
