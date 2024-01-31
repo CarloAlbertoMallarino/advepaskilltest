@@ -16,7 +16,7 @@ public class Sc_PlayerController : MonoBehaviour
 
     private Vector2 currentMovement;
     private bool runPressed;
-    [SerializeField] private bool lockPressed;
+    private bool lockPressed;
     private void Awake()
     {
         input = new CustomInput();
@@ -55,6 +55,7 @@ public class Sc_PlayerController : MonoBehaviour
         animator.SetFloat("Y", currentMovement.y);
         animator.SetFloat("X", currentMovement.x);
         animator.SetBool("isRunning", runPressed);
+        print(currentMovement);
     }
 
     private void RotatePlayer()
