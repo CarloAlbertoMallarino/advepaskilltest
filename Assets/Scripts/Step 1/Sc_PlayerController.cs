@@ -9,14 +9,15 @@ public class Sc_PlayerController : MonoBehaviour
     private CinemachineFreeLook camRef;
     private float camXMaxSpeed;
     private float camYMaxSpeed;
-    private CustomInput input;
-    private CharacterController controller;
 
     private Animator animator;
 
+    private CharacterController controller;
+    private CustomInput input;
     private Vector2 currentMovement;
     private bool runPressed;
     private bool lockPressed;
+
     private void Awake()
     {
         input = new CustomInput();
@@ -28,7 +29,7 @@ public class Sc_PlayerController : MonoBehaviour
 
     private void Update()
     {
-        HandleMovement();
+        HandleAnimations();
         RotatePlayer();
     }
 
@@ -50,14 +51,14 @@ public class Sc_PlayerController : MonoBehaviour
     }
 
     #region Movement
-    private void HandleMovement()
+    private void HandleAnimations()
     {
         animator.SetFloat("Y", currentMovement.y);
         animator.SetFloat("X", currentMovement.x);
         animator.SetBool("isRunning", runPressed);
-        print(currentMovement);
     }
 
+    //Handle movement
     private void OnAnimatorMove()
     {
         Vector3 velocity = animator.deltaPosition;
@@ -77,9 +78,13 @@ public class Sc_PlayerController : MonoBehaviour
     #endregion
 
     #region Camera
-    public void SetCamera(CinemachineFreeLook cam)
+    public void InitCamera(CinemachineFreeLook cam)
     {
         camRef = cam;
+
+        camRef.m_Follow = this.transform;
+        camRef.m_LookAt = this.transform;
+
         camXMaxSpeed = camRef.m_XAxis.m_MaxSpeed;
         camYMaxSpeed = camRef.m_YAxis.m_MaxSpeed;
     }

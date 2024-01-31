@@ -9,7 +9,7 @@ public class Sc_CanvasBillboard : MonoBehaviour
 
     void Start()
     {
-        cinemachineCamera = FindObjectOfType<CinemachineVirtualCamera>();
+        cinemachineCamera = FindObjectOfType<CinemachineVirtualCamera>(); //looking for the camera in the scene
 
         if (cinemachineCamera == null)
         {

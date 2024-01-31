@@ -17,11 +17,11 @@ public class Sc_JsonReader : MonoBehaviour
 
     private IEnumerator Read()
     {
-        UnityWebRequest request = UnityWebRequest.Get(URL);
+        UnityWebRequest request = UnityWebRequest.Get(URL); 
 
-        yield return request.SendWebRequest();
+        yield return request.SendWebRequest(); //sending the request
 
-        if(request.result != UnityWebRequest.Result.Success)
+        if (request.result != UnityWebRequest.Result.Success)
             Debug.LogError(request.error);
         else
         {

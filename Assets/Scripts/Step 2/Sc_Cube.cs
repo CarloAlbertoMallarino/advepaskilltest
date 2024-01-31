@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Sc_Cube : MonoBehaviour
 {
-    [SerializeField]private int ID;
-    [SerializeField] private string color;
-    [SerializeField] private string cubeName;
+    private int ID;
+    private string color;
+    private string cubeName;
 
     private Sc_CubeInfos cubeInfos;
     private MeshRenderer cubeRenderer;

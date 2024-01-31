@@ -14,6 +14,7 @@ public class Sc_CubeManager : MonoBehaviour
         StartCoroutine(WaitForJsonDataValidation());
     }
 
+    //to avoid null reference I wait for the data collection before deserialize the json
     private IEnumerator WaitForJsonDataValidation()
     {
         yield return new WaitUntil(() => jsonReader.GetDataCollected);

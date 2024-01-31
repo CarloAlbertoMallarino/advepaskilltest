@@ -14,19 +14,20 @@ public class Sc_SceneManager : MonoBehaviour
     [SerializeField] private CinemachineFreeLook cinemachineCamera;
     private void Start()
     {
-        GameObject player = Instantiate(playerPrefab, playerStart.position, playerStart.rotation);
-        player.GetComponent<Sc_PlayerController>().SetCamera(cinemachineCamera);
-        cinemachineCamera.m_Follow = player.transform;
-        cinemachineCamera.m_LookAt = player.transform;
+        SpawnPlayerAndInitCamera();
     } 
+
+    private void SpawnPlayerAndInitCamera()
+    {
+        GameObject player = Instantiate(playerPrefab, playerStart.position, playerStart.rotation);
+        player.GetComponent<Sc_PlayerController>().InitCamera(cinemachineCamera);
+    }
     
     public void LoadSceneAdditive(string sceneName)
     {
         if (!SceneManager.GetSceneByName(sceneName).isLoaded)
             SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
         else
-            SceneManager.UnloadSceneAsync(sceneName);
-
-              
+            SceneManager.UnloadSceneAsync(sceneName);         
     }
 }
