@@ -58,6 +58,13 @@ public class Sc_PlayerController : MonoBehaviour
         print(currentMovement);
     }
 
+    private void OnAnimatorMove()
+    {
+        Vector3 velocity = animator.deltaPosition;
+        velocity.y = Physics.gravity.y * Time.deltaTime;
+        controller.Move(velocity);
+    }
+
     private void RotatePlayer()
     {
         if(camRef != null)
@@ -65,7 +72,6 @@ public class Sc_PlayerController : MonoBehaviour
             Quaternion rotation = Quaternion.Euler(0, camRef.m_XAxis.Value, 0); //get the angle of the x axis of the cinemachine
             transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 20 * Time.deltaTime);
         }
-
     }
 
     #endregion
